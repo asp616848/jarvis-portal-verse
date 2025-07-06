@@ -9,7 +9,7 @@ const Works = () => {
       title: "VR Based Phobia Therapy",
       category: "AI + Healthcare",
       description: "Immersive digital environments using spatial realism and precision to provide therapy for phobias using VR.",
-      image: "/lovable-uploads/17a9c90d-ec6a-4218-922f-4dc5451f95b4.png",
+      image: "/images/17a9c90d-ec6a-4218-922f-4dc5451f95b4.png",
       tags: ["VR", "AI", "Healthcare", "Therapy"]
     },
     {
@@ -17,7 +17,7 @@ const Works = () => {
       title: "Cyber Intrusion Pattern Identifier",
       category: "Cybersecurity",
       description: "Advanced AI system for detecting and analyzing cyber intrusion patterns in real-time network traffic.",
-      image: "/lovable-uploads/3f27905a-6e68-43c6-9c2b-d76500036ba4.png",
+      image: "/images/3f27905a-6e68-43c6-9c2b-d76500036ba4.png",
       tags: ["AI", "Cybersecurity", "Network", "Detection"]
     },
     {
@@ -25,7 +25,7 @@ const Works = () => {
       title: "Quantum Neural Networks",
       category: "Quantum Computing",
       description: "Hybrid quantum-classical neural networks for solving complex optimization problems.",
-      image: "/lovable-uploads/364e2889-b9af-4fcc-8218-05071af34fbe.png",
+      image: "/images/364e2889-b9af-4fcc-8218-05071af34fbe.png",
       tags: ["Quantum", "Neural Networks", "AI", "Computing"]
     },
     {
@@ -33,7 +33,7 @@ const Works = () => {
       title: "Smart City IoT Framework",
       category: "IoT + Smart Systems",
       description: "Comprehensive IoT framework for smart city infrastructure management and optimization.",
-      image: "/lovable-uploads/e3f1469f-69c1-4ccf-8d18-a1a78dfe23d3.png",
+      image: "/images/e3f1469f-69c1-4ccf-8d18-a1a78dfe23d3.png",
       tags: ["IoT", "Smart City", "Infrastructure", "Optimization"]
     }
   ];
