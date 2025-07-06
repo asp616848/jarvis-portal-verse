@@ -35,13 +35,18 @@ const Navbar: React.FC = () => {
         </div>
         
         <div className="flex items-center space-x-8">
-          {['Works', 'About', 'Contact', 'Join Us'].map((item) => (
+          {[
+            { name: 'Works', path: '/works' },
+            { name: 'About', path: '/about' },
+            { name: 'Contact', path: '/contact' },
+            { name: 'Join Us', path: '/join-us' }
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
+              key={item.name}
+              href={item.path}
               className="font-mono-tech text-sm uppercase tracking-wider hover:text-primary transition-colors duration-300 relative group"
             >
-              {item}
+              {item.name}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}

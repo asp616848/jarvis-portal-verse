@@ -6,15 +6,28 @@ interface CustomCursorProps {
 
 const CustomCursor: React.FC<CustomCursorProps> = ({ mode }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const updateCursorPosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      setTargetPosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', updateCursorPosition);
     return () => window.removeEventListener('mousemove', updateCursorPosition);
   }, []);
+
+  useEffect(() => {
+    const animatePosition = () => {
+      setPosition(prev => ({
+        x: prev.x + (targetPosition.x - prev.x) * 0.15,
+        y: prev.y + (targetPosition.y - prev.y) * 0.15,
+      }));
+    };
+
+    const timer = setInterval(animatePosition, 16);
+    return () => clearInterval(timer);
+  }, [targetPosition]);
 
   return (
     <div

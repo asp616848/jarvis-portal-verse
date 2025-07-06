@@ -8,30 +8,30 @@
 
 @layer base {
   :root {
-    /* Base Colors - Dark Sci-Fi Theme */
-    --background: 0 0% 5%;
-    --foreground: 0 0% 95%;
+    /* Base Colors - Cyberpunk Dark Theme */
+    --background: 230 35% 7%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 90%;
+    --card: 230 35% 9%;
+    --card-foreground: 210 20% 90%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 90%;
+    --popover: 230 35% 9%;
+    --popover-foreground: 210 20% 90%;
 
-    /* Futuristic Primary - Neon Green */
-    --primary: 120 100% 50%;
-    --primary-foreground: 0 0% 5%;
-    --primary-glow: 120 100% 60%;
+    /* Cyber Primary - Electric Cyan */
+    --primary: 180 100% 60%;
+    --primary-foreground: 230 35% 7%;
+    --primary-glow: 180 100% 70%;
 
-    /* Cyber Secondary - Electric Blue */
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 0 0% 5%;
-    --secondary-glow: 180 100% 60%;
+    /* Neon Secondary - Hot Pink */
+    --secondary: 320 100% 60%;
+    --secondary-foreground: 230 35% 7%;
+    --secondary-glow: 320 100% 70%;
 
-    /* Accent - Cyber Red */
-    --accent: 0 100% 50%;
-    --accent-foreground: 0 0% 95%;
-    --accent-glow: 0 100% 60%;
+    /* Accent - Electric Green */
+    --accent: 120 100% 60%;
+    --accent-foreground: 230 35% 7%;
+    --accent-glow: 120 100% 70%;
 
     /* Tech Muted - Deep Gray */
     --muted: 0 0% 15%;
