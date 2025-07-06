@@ -2,41 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* JARVIS Futuristic Design System - Retro-Futuristic Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Dark Sci-Fi Theme */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Futuristic Primary - Neon Green */
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 5%;
+    --primary-glow: 120 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Cyber Secondary - Electric Blue */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 0 0% 5%;
+    --secondary-glow: 180 100% 60%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Cyber Red */
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 95%;
+    --accent-glow: 0 100% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Tech Muted - Deep Gray */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 12%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+
+    /* Custom Futuristic Colors */
+    --neon-green: 120 100% 50%;
+    --neon-blue: 200 100% 50%;
+    --cyber-red: 0 100% 50%;
+    --tech-purple: 280 100% 50%;
+    --matrix-green: 120 100% 40%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-cyber: linear-gradient(45deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-matrix: linear-gradient(180deg, hsl(var(--background)), hsl(120 100% 5%));
+    --gradient-portal: linear-gradient(90deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.5);
+    --shadow-cyber: 0 0 30px hsl(var(--secondary) / 0.3);
+    --shadow-red: 0 0 25px hsl(var(--accent) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-portal: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,12 +124,148 @@ All colors MUST be HSL.
   }
 }
 
+/* Custom Components & Utilities */
+@layer components {
+  /* Futuristic Typography */
+  .font-tech {
+    font-family: 'Orbitron', 'JetBrains Mono', monospace;
+  }
+  
+  .font-mono-tech {
+    font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  }
+  
+  /* Custom Cursor */
+  .cursor-hello {
+    cursor: none;
+  }
+  
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: var(--transition-smooth);
+  }
+  
+  .cursor-box {
+    background: hsl(var(--primary));
+    color: hsl(var(--background));
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--shadow-neon);
+  }
+  
+  .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    box-shadow: var(--shadow-neon);
+  }
+  
+  /* Slideshow Containers */
+  .slideshow-left, .slideshow-right {
+    transition: var(--transition-portal);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .slideshow-split-left {
+    transform: translateX(-100%);
+  }
+  
+  .slideshow-split-right {
+    transform: translateX(100%);
+  }
+  
+  /* Glitch Effects */
+  .glitch-text {
+    position: relative;
+    animation: glitch 2s linear infinite;
+  }
+  
+  @keyframes glitch {
+    2%, 64% { transform: translate(2px, 0) skew(0deg); }
+    4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+    62% { transform: translate(0, 0) skew(5deg); }
+  }
+  
+  /* Neon Glow Effects */
+  .neon-text {
+    text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary));
+  }
+  
+  .neon-border {
+    border: 1px solid hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5), inset 0 0 10px hsl(var(--primary) / 0.1);
+  }
+  
+  /* Navbar Animations */
+  .navbar-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  .navbar-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* Hero Text Styles */
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 0.9;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    letter-spacing: 0.2em;
+    font-weight: 400;
+  }
+  
+  /* Scroll-triggered Text */
+  .fixed-text {
+    position: fixed;
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    transition: color 0.3s ease;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono-tech;
+    overflow-x: hidden;
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 2px;
+    box-shadow: var(--shadow-neon);
   }
 }
