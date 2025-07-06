@@ -1,50 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface CustomCursorProps {
   mode: 'hello' | 'dot';
 }
 
 const CustomCursor: React.FC<CustomCursorProps> = ({ mode }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [targetPosition, setTargetPosition] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateCursorPosition = (e: MouseEvent) => {
-      setTargetPosition({ x: e.clientX, y: e.clientY });
+    const updateCursor = (e: MouseEvent) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      }
     };
 
-    window.addEventListener('mousemove', updateCursorPosition);
-    return () => window.removeEventListener('mousemove', updateCursorPosition);
+    window.addEventListener('mousemove', updateCursor);
+    return () => {
+      window.removeEventListener('mousemove', updateCursor);
+    };
   }, []);
 
-  useEffect(() => {
-    const animatePosition = () => {
-      setPosition(prev => ({
-        x: prev.x + (targetPosition.x - prev.x) * 0.15,
-        y: prev.y + (targetPosition.y - prev.y) * 0.15,
-      }));
-    };
-
-    const timer = setInterval(animatePosition, 16);
-    return () => clearInterval(timer);
-  }, [targetPosition]);
-
   return (
-    <div
-      className="custom-cursor"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: mode === 'hello' ? 'translate(-50%, -50%)' : 'translate(-4px, -4px)',
-      }}
-    >
+    <div ref={cursorRef} className="custom-cursor">
       {mode === 'hello' ? (
         <div className="cursor-box font-tech">
           HELLO
           <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-primary border-t-2 border-b-2 border-t-transparent border-b-transparent"></div>
         </div>
       ) : (
-        <div className="cursor-dot"></div>
+        <div className="cursor-dot" />
       )}
     </div>
   );

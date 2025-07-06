@@ -139,7 +139,7 @@
   .cursor-hello {
     cursor: none;
   }
-  
+
   .custom-cursor {
     position: fixed;
     top: 0;
@@ -147,9 +147,11 @@
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: difference;
-    transition: var(--transition-smooth);
+    will-change: transform;
+    /* Remove transition on transform to prevent lag */
+    /* transition: var(--transition-smooth); 👈 REMOVE or comment out */
   }
-  
+
   .cursor-box {
     background: hsl(var(--primary));
     color: hsl(var(--background));
@@ -161,7 +163,7 @@
     letter-spacing: 1px;
     box-shadow: var(--shadow-neon);
   }
-  
+
   .cursor-dot {
     width: 8px;
     height: 8px;
@@ -169,6 +171,7 @@
     border-radius: 50%;
     box-shadow: var(--shadow-neon);
   }
+
   
   /* Slideshow Containers */
   .slideshow-left, .slideshow-right {
